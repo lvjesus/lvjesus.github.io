@@ -4,13 +4,35 @@
   <title><![CDATA[lvjesus's blog]]></title>
   <link href="www.blog.lvjesus.com/atom.xml" rel="self"/>
   <link href="www.blog.lvjesus.com/"/>
-  <updated>2017-02-23T17:34:44+08:00</updated>
+  <updated>2017-02-23T22:26:43+08:00</updated>
   <id>www.blog.lvjesus.com/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[text2]]></title>
+    <link href="www.blog.lvjesus.com/14878610150115.html"/>
+    <updated>2017-02-23T22:43:35+08:00</updated>
+    <id>www.blog.lvjesus.com/14878610150115.html</id>
+    <content type="html"><![CDATA[
+<p>text2</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[text]]></title>
+    <link href="www.blog.lvjesus.com/14878609983402.html"/>
+    <updated>2017-02-23T22:43:18+08:00</updated>
+    <id>www.blog.lvjesus.com/14878609983402.html</id>
+    <content type="html"><![CDATA[
+<p>text1</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[摄像头]]></title>
