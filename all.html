@@ -105,12 +105,56 @@
 			<div class="article">
                 <a class="clearlink" href="14878610150115.html">
                 
-                  <h1>text2</h1>
+                  <h1>swift 中 open,public,internal,fileprivate,private关键词</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>text2</p>
+                        	<h4 id="toc_0">open</h4>
+
+<ul>
+<li>open 修饰的 class 在 Module 内部和外部都可以被访问和继承</li>
+<li>open 修饰的 func 在 Module 内部和外部都可以被访问和重载（override）</li>
+</ul>
+
+<h4 id="toc_1">public</h4>
+
+<ul>
+<li>public 修饰的 class 在 Module 内部可以访问和继承，在外部只能访问</li>
+<li>public 修饰的 func 在 Module 内部可以被访问和重载（override）,在外部只能访问</li>
+</ul>
+
+<h4 id="toc_2">Final</h4>
+
+<ul>
+<li>final 修饰的 class 任何地方都不能被继承</li>
+<li>final 修饰的 func 任何地方都不能被 Override</li>
+</ul>
+
+<h4 id="toc_3">internal</h4>
+
+<ul>
+<li>默认访问级别，internal修饰符可写可不写</li>
+<li>internal 修饰的属性或方法在源代码所在的整个模块都可以访问</li>
+</ul>
+
+<h4 id="toc_4">fileprivate</h4>
+
+<ul>
+<li>fileprivate 修饰的属性或者方法在当前的Swift源文件里可以访问。</li>
+</ul>
+
+<h4 id="toc_5">private</h4>
+
+<ul>
+<li>private 修饰的属性或者方法只能在当前类里访问。</li>
+</ul>
+
+<hr/>
+
+<h4 id="toc_6">访问权限从高到低排序如下：</h4>
+
+<p>open &gt; public &gt; internal &gt; fileprivate &gt; private。</p>
 
                         
                       </div>
@@ -138,14 +182,12 @@
 			<div class="article">
                 <a class="clearlink" href="14878609983402.html">
                 
-                  <h1>相关标注</h1>
+                  <h1>Demo</h1>
                   <div class="a-content">
                       
                       <div class="a-content-text">
                         
-                        	<p>为了统一管理网络账号,现将github账号,以及自己的域名统一改成了lvjesus.以前的账号已停用.特此标记一下!</p>
-
-<p>写博客的工具也由<a href="https://hexo.io/">Hexo</a>转为<a href="http://zh.mweb.im/">MWeb</a></p>
+                        	<p>写博客的工具也由<a href="https://hexo.io/">Hexo</a>转为<a href="http://zh.mweb.im/">MWeb</a></p>
 
 <p>博客地址现在统一改为 </p>
 
@@ -296,13 +338,13 @@
 	      
 		      
 			      <li class="post">
-			        <a href="14878610150115.html">text2</a>
+			        <a href="14878610150115.html">swift 中 open,public,internal,fileprivate,private关键词</a>
 			      </li>
 		     
 		  
 		      
 			      <li class="post">
-			        <a href="14878609983402.html">相关标注</a>
+			        <a href="14878609983402.html">Demo</a>
 			      </li>
 		     
 		  
