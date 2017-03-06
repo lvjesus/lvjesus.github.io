@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  技术细节 - lvjesus's blog
+  <h1> 第三方库 </h1> - lvjesus's blog
   
   </title>
   
@@ -96,143 +96,224 @@
        
 
  <script type="text/javascript">
-	$(function(){
-		$('#menu_item_index').addClass('is_active');
-	});
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
 </script>
 <div class="row">
-	<div class="large-8 medium-8 columns">
-		<div class="markdown-body home-categories">
-		
-			<div class="article">
-                <a class="clearlink" href="14884217311672.html">
-                
-                  <h1>Xcode7编译完好Xcode8报错</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<p>解决办法：<br/>
-将 Settings 内的 <code>Enable Testability</code> 设置为 NO 即可（Xcode 7 默认关闭，Xcode 8 默认开启）；<br/>
-这个相关选项和 hiar 内部的 arm64 架构的某些函数有关，导致了报错。只要设置为 no 就可以跳过这部分错误。</p>
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1><h1> 第三方库 </h1></h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2017/3/1</span>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/3/2</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html'>技术细节</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E9%9A%8F%E7%AC%94.html'>随笔</a></span>
+           
+         
+          <span class="comments">
+            
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-			<div class="article">
-                <a class="clearlink" href="14878610150115.html">
-                
-                  <h1>swift 中 open,public,internal,fileprivate,private关键词</h1>
-                  <div class="a-content">
-                      
-                      <div class="a-content-text">
-                        
-                        	<h4 id="toc_0">open</h4>
+            
+          </span>
 
-<ul>
-<li>open 修饰的 class 在 Module 内部和外部都可以被访问和继承</li>
-<li>open 修饰的 func 在 Module 内部和外部都可以被访问和重载（override）</li>
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <ul>
+<li>
+<a href="#toc_0">钥匙串相关</a>
+</li>
+<li>
+<a href="#toc_1">网络</a>
+</li>
+<li>
+<a href="#toc_2">函数响应式编程</a>
+</li>
+<li>
+<a href="#toc_3">异步编程</a>
+</li>
+<li>
+<a href="#toc_4">CoreData</a>
+</li>
+<li>
+<a href="#toc_5">热更新</a>
+</li>
+<li>
+<a href="#toc_6">包管理</a>
+</li>
 </ul>
 
-<h4 id="toc_1">public</h4>
-
-<ul>
-<li>public 修饰的 class 在 Module 内部可以访问和继承，在外部只能访问</li>
-<li>public 修饰的 func 在 Module 内部可以被访问和重载（override）,在外部只能访问</li>
-</ul>
-
-<h4 id="toc_2">Final</h4>
-
-<ul>
-<li>final 修饰的 class 任何地方都不能被继承</li>
-<li>final 修饰的 func 任何地方都不能被 Override</li>
-</ul>
-
-<h4 id="toc_3">internal</h4>
-
-<ul>
-<li>默认访问级别，internal修饰符可写可不写</li>
-<li>internal 修饰的属性或方法在源代码所在的整个模块都可以访问</li>
-</ul>
-
-<h4 id="toc_4">fileprivate</h4>
-
-<ul>
-<li>fileprivate 修饰的属性或者方法在当前的Swift源文件里可以访问。</li>
-</ul>
-
-<h4 id="toc_5">private</h4>
-
-<ul>
-<li>private 修饰的属性或者方法只能在当前类里访问。</li>
-</ul>
 
 <hr/>
 
-<h4 id="toc_6">访问权限从高到低排序如下：</h4>
+<h4 id="toc_0">钥匙串相关</h4>
 
-<p>open &gt; public &gt; internal &gt; fileprivate &gt; private。</p>
+<p><a href="https://github.com/lvjesus/SAMKeychain">SAMKeychain-OC</a></p>
 
-                        
-                      </div>
-                  </div>
-                </a>
-                <div class="read-more clearfix">
-                  <div class="more-left left">
-                  
-                    <span class="date">2017/2/23</span>
-                    <span>posted in&nbsp;</span> 
-          				  
-          					    <span class="posted-in"><a href='%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html'>技术细节</a></span>
-          				   
-                  </div>
-                  <div class="more-right right">
-                  <span class="comments">
-                      
+<blockquote>
+<p>SAMKeychain is a simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system Keychain on Mac OS X and iOS.</p>
+</blockquote>
 
-                       
-                  </span>
-                  </div>
-                </div>
-              </div><!-- article -->
-        
-              
+<p><a href="https://github.com/castial/HYKeychainHelper">HYKeychainHelper-swift</a></p>
+
+<blockquote>
+<p>HYKeychainHelper是一个iOS系统Keychain操作的工具类，可以非常方便地实现获取账户、获取密码、添加密码和删除密码。</p>
+</blockquote>
+
+<h4 id="toc_1">网络</h4>
+
+<p><a href="https://github.com/Alamofire/Alamofire">Alamofire-swift</a></p>
+
+<blockquote>
+<p>Alamofire is an HTTP networking library written in Swift.</p>
+</blockquote>
+
+<p><a href="https://github.com/AFNetworking/AFNetworking">AFNetworking-OC</a></p>
+
+<blockquote>
+<p>AFNetworking is a delightful networking library for iOS and Mac OS X. It&#39;s built on top of the Foundation URL Loading System, extending the powerful high-level networking abstractions built into Cocoa. It has a modular architecture with well-designed, feature-rich APIs that are a joy to use.</p>
+</blockquote>
+
+<h4 id="toc_2">函数响应式编程</h4>
+
+<p><a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa-OC</a></p>
+
+<blockquote>
+<p>Streams of values over time</p>
+</blockquote>
+
+<p><a href="https://github.com/ReactiveCocoa/ReactiveSwift/">ReactiveSwift-Swift</a></p>
+
+<blockquote>
+<p>Streams of values over time</p>
+</blockquote>
+
+<p><a href="https://github.com/ReactiveX/RxSwift">RxSwift-swift</a></p>
+
+<blockquote>
+<p>Reactive Programming in Swift</p>
+</blockquote>
+
+<h4 id="toc_3">异步编程</h4>
+
+<p><a href="https://github.com/mxcl/PromiseKit">PromiseKit</a></p>
+
+<blockquote>
+<p>PromiseKit 是一款 swift 编写的支持 iOS，macOS，tvOS，watchOS 等多平台的轻量级异步编程库，同时 PromiseKit 完美的支持了 Objective-C 桥接。</p>
+</blockquote>
+
+<h4 id="toc_4">CoreData</h4>
+
+<p><a href="https://github.com/magicalpanda/MagicalRecord">MagicalRecord</a></p>
+
+<blockquote>
+<p>Super Awesome Easy Fetching for Core Data</p>
+</blockquote>
+
+<p><a href="https://github.com/RestKit/RestKit">RestKit</a></p>
+
+<blockquote>
+<p>RestKit是为了和RESTful web服务交互的一个Objective-C框架。它提供了一个Core Data实体映射引擎，把序列化的响应对象直接映射给托管的对象。</p>
+</blockquote>
+
+<p><a href="https://github.com/mutualmobile/MMRecord">MMRecord</a></p>
+
+<blockquote>
+<p>MMRecord是一个基于block（块）的集成库，它使用Core Data模型配置，自动创建并填充来自API响应的完整地对象图。当它在后台为你创建、获取、填充NSManagedObjects 实例时，使从web服务请求来的生成的本地对象尽可能简单。</p>
+</blockquote>
+
+<p><a href="https://github.com/GrahamDennis/GDCoreDataConcurrencyDebugging">GDCoreDataConcurrencyDebugging</a></p>
+
+<blockquote>
+<p>GDCoreDataConcurrencyDebugging helps you find cases where NSManagedObject&#39;s are being called on the wrong thread or dispatch queue.</p>
+</blockquote>
+
+<p><a href="https://github.com/tLewisII/CoreData-hs">CoreData-hs</a></p>
+
+<blockquote>
+<p>Core Data fetch requests, created for you.<br/>
+CoreData-hs 生成类别方法来执行Core Data模型里所有实体和属性的常见获取请求。创建这些方法不难，但它耗时--编码时节省每一点时间都是有价值的！</p>
+</blockquote>
+
+<h4 id="toc_5">热更新</h4>
+
+<p><a href="https://github.com/bang590/JSPatch">JSPatch</a></p>
+
+<blockquote>
+<p>JSPatch bridge Objective-C and Javascript using the Objective-C runtime. You can call any Objective-C class and method in JavaScript by just including a small engine. JSPatch is generally used to hotfix iOS App.<br/>
+JSPatch 可以让你用 JavaScript 书写原生 iOS APP。只需在项目引入极小的引擎，就可以使用 JavaScript 调用任何 Objective-C 的原生接口，获得脚本语言的优势：为项目动态添加模块，或替换项目原生代码动态修复 bug。<br/>
+<a href="http://jspatch.com/">JSPatch平台集成方案</a></p>
+</blockquote>
+
+<p><a href="https://github.com/facebook/react-native">react-native</a></p>
+
+<blockquote>
+<p>A framework for building native apps with React <a href="http://facebook.github.io/react-native/">Docs</a></p>
+</blockquote>
+
+<p><a href="https://github.com/alibaba/weex">weex</a></p>
+
+<blockquote>
+<p>A framework for building Mobile cross-platform UI</p>
+</blockquote>
+
+<p><a href="https://github.com/DynamicCocoa/DynamicCocoa">DynamicCocoa</a></p>
+
+<blockquote>
+<p>A framework for running Cocoa code dynamically.</p>
+</blockquote>
+
+<h4 id="toc_6">包管理</h4>
+
+<p><a href="https://github.com/Homebrew/brew/">Homebrew</a></p>
+
+<blockquote>
+<p>The missing package manager for macOS</p>
+</blockquote>
 
 
-			<div class="row">
-			  <div class="large-6 columns">
-			  <p class="text-left" style="padding-top:25px;">
-			   
-			  </p>
-			  </div>
-			  <div class="large-6 columns">
-			<p class="text-right" style="padding-top:25px;">
-			
-			</p>
-			  </div>
-			</div>
-		</div>
-	</div><!-- large 8 -->
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="14883561894948.html" 
+          title="Previous Post: mac 平台应用程序">&laquo; mac 平台应用程序</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="14878610150115.html" 
+          title="Next Post: swift 中 open,public,internal,fileprivate,private关键词">swift 中 open,public,internal,fileprivate,private关键词 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
 
  <div class="large-4 medium-4 columns">
   <div class="hide-for-small">
