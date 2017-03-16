@@ -4,13 +4,44 @@
   <title><![CDATA[lvjesus's blog]]></title>
   <link href="www.blog.lvjesus.com/atom.xml" rel="self"/>
   <link href="www.blog.lvjesus.com/"/>
-  <updated>2017-03-15T14:16:23+08:00</updated>
+  <updated>2017-03-16T16:21:46+08:00</updated>
   <id>www.blog.lvjesus.com/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[简单的设置 (显示/隐藏) 隐藏文件(快捷键`⌘⇧.`)]]></title>
+    <link href="www.blog.lvjesus.com/14896520622006.html"/>
+    <updated>2017-03-16T16:14:22+08:00</updated>
+    <id>www.blog.lvjesus.com/14896520622006.html</id>
+    <content type="html"><![CDATA[
+<p><img src="media/14896520622006/1_%E6%89%93%E5%BC%80Automator.png" alt="1_打开Automato"/></p>
+
+<span id="more"></span><!-- more -->
+
+<p><img src="media/14896520622006/2.%E8%AE%BE%E7%BD%AEAutomator.png" alt="2.设置Automato"/></p>
+
+<p>脚本如下:</p>
+
+<pre><code class="language-bash">STATUS=`defaults read com.apple.finder AppleShowAllFiles`
+if [ $STATUS == YES ];
+then
+defaults write com.apple.finder AppleShowAllFiles NO
+else
+defaults write com.apple.finder AppleShowAllFiles YES
+fi
+
+</code></pre>
+
+<p>重启Finder</p>
+
+<p>现在，如果你打开Finder——服务菜单，你会看到刚才制作的“Toggle Hidden Files”选项。现在添加键盘快捷键，打开系统偏好设置——键盘，点击”快捷键“选项卡。在左边选择”服务“，然后勾上“Toggle Hidden Files”，在它的右边双击鼠标，然后按下你想要设定成为的快捷键，如<code>⌘⇧.</code></p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sublime Text3 (build3126) 简单使用笔记]]></title>
@@ -126,6 +157,8 @@ reboot 回车<br/>
 <p><a href="http://calibre-ebook.com/">calibre</a></p>
 
 <h4 id="toc_1">移动应用原型与线框图工具</h4>
+
+<p><a href="https://axure.cachefly.net/AxureRP-Setup.dmg">AxureRP</a></p>
 
 <p><a href="https://modao.cc/">墨刀</a></p>
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  第三方库 - lvjesus's blog
+  简单的设置 (显示/隐藏) 隐藏文件(快捷键`⌘⇧.`) - lvjesus's blog
   
   </title>
   
@@ -105,10 +105,10 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>第三方库</h1>
+          <h1>简单的设置 (显示/隐藏) 隐藏文件(快捷键`⌘⇧.`)</h1>
      
         <div class="read-more clearfix">
-          <span class="date">2017/3/1</span>
+          <span class="date">2017/3/16</span>
 
           <span>posted in&nbsp;</span> 
           
@@ -125,159 +125,27 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <ul>
-<li>
-<a href="#toc_0">钥匙串相关</a>
-</li>
-<li>
-<a href="#toc_1">网络</a>
-</li>
-<li>
-<a href="#toc_2">函数响应式编程</a>
-</li>
-<li>
-<a href="#toc_3">异步编程</a>
-</li>
-<li>
-<a href="#toc_4">CoreData</a>
-</li>
-<li>
-<a href="#toc_5">热更新</a>
-</li>
-<li>
-<a href="#toc_6">包管理</a>
-</li>
-</ul>
-
+      <p><img src="media/14896520622006/1_%E6%89%93%E5%BC%80Automator.png" alt="1_打开Automato"/></p>
 
 <span id="more"></span><!-- more -->
 
-<hr/>
+<p><img src="media/14896520622006/2.%E8%AE%BE%E7%BD%AEAutomator.png" alt="2.设置Automato"/></p>
 
-<h4 id="toc_0">钥匙串相关</h4>
+<p>脚本如下:</p>
 
-<p><a href="https://github.com/lvjesus/SAMKeychain">SAMKeychain-OC</a></p>
+<pre><code class="language-bash">STATUS=`defaults read com.apple.finder AppleShowAllFiles`
+if [ $STATUS == YES ];
+then
+defaults write com.apple.finder AppleShowAllFiles NO
+else
+defaults write com.apple.finder AppleShowAllFiles YES
+fi
 
-<blockquote>
-<p>SAMKeychain is a simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system Keychain on Mac OS X and iOS.</p>
-</blockquote>
+</code></pre>
 
-<p><a href="https://github.com/castial/HYKeychainHelper">HYKeychainHelper-swift</a></p>
+<p>重启Finder</p>
 
-<blockquote>
-<p>HYKeychainHelper是一个iOS系统Keychain操作的工具类，可以非常方便地实现获取账户、获取密码、添加密码和删除密码。</p>
-</blockquote>
-
-<h4 id="toc_1">网络</h4>
-
-<p><a href="https://github.com/Alamofire/Alamofire">Alamofire-swift</a></p>
-
-<blockquote>
-<p>Alamofire is an HTTP networking library written in Swift.</p>
-</blockquote>
-
-<p><a href="https://github.com/AFNetworking/AFNetworking">AFNetworking-OC</a></p>
-
-<blockquote>
-<p>AFNetworking is a delightful networking library for iOS and Mac OS X. It&#39;s built on top of the Foundation URL Loading System, extending the powerful high-level networking abstractions built into Cocoa. It has a modular architecture with well-designed, feature-rich APIs that are a joy to use.</p>
-</blockquote>
-
-<h4 id="toc_2">函数响应式编程</h4>
-
-<p><a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa-OC</a></p>
-
-<blockquote>
-<p>Streams of values over time</p>
-</blockquote>
-
-<p><a href="https://github.com/ReactiveCocoa/ReactiveSwift/">ReactiveSwift-Swift</a></p>
-
-<blockquote>
-<p>Streams of values over time</p>
-</blockquote>
-
-<p><a href="https://github.com/ReactiveX/RxSwift">RxSwift-swift</a></p>
-
-<blockquote>
-<p>Reactive Programming in Swift</p>
-</blockquote>
-
-<h4 id="toc_3">异步编程</h4>
-
-<p><a href="https://github.com/mxcl/PromiseKit">PromiseKit</a></p>
-
-<blockquote>
-<p>PromiseKit 是一款 swift 编写的支持 iOS，macOS，tvOS，watchOS 等多平台的轻量级异步编程库，同时 PromiseKit 完美的支持了 Objective-C 桥接。</p>
-</blockquote>
-
-<h4 id="toc_4">CoreData</h4>
-
-<p><a href="https://github.com/magicalpanda/MagicalRecord">MagicalRecord</a></p>
-
-<blockquote>
-<p>Super Awesome Easy Fetching for Core Data</p>
-</blockquote>
-
-<p><a href="https://github.com/RestKit/RestKit">RestKit</a></p>
-
-<blockquote>
-<p>RestKit是为了和RESTful web服务交互的一个Objective-C框架。它提供了一个Core Data实体映射引擎，把序列化的响应对象直接映射给托管的对象。</p>
-</blockquote>
-
-<p><a href="https://github.com/mutualmobile/MMRecord">MMRecord</a></p>
-
-<blockquote>
-<p>MMRecord是一个基于block（块）的集成库，它使用Core Data模型配置，自动创建并填充来自API响应的完整地对象图。当它在后台为你创建、获取、填充NSManagedObjects 实例时，使从web服务请求来的生成的本地对象尽可能简单。</p>
-</blockquote>
-
-<p><a href="https://github.com/GrahamDennis/GDCoreDataConcurrencyDebugging">GDCoreDataConcurrencyDebugging</a></p>
-
-<blockquote>
-<p>GDCoreDataConcurrencyDebugging helps you find cases where NSManagedObject&#39;s are being called on the wrong thread or dispatch queue.</p>
-</blockquote>
-
-<p><a href="https://github.com/tLewisII/CoreData-hs">CoreData-hs</a></p>
-
-<blockquote>
-<p>Core Data fetch requests, created for you.<br/>
-CoreData-hs 生成类别方法来执行Core Data模型里所有实体和属性的常见获取请求。创建这些方法不难，但它耗时--编码时节省每一点时间都是有价值的！</p>
-</blockquote>
-
-<h4 id="toc_5">热更新</h4>
-
-<p><a href="https://github.com/bang590/JSPatch">JSPatch</a></p>
-
-<blockquote>
-<p>JSPatch bridge Objective-C and Javascript using the Objective-C runtime. You can call any Objective-C class and method in JavaScript by just including a small engine. JSPatch is generally used to hotfix iOS App.<br/>
-JSPatch 可以让你用 JavaScript 书写原生 iOS APP。只需在项目引入极小的引擎，就可以使用 JavaScript 调用任何 Objective-C 的原生接口，获得脚本语言的优势：为项目动态添加模块，或替换项目原生代码动态修复 bug。<br/>
-<a href="http://jspatch.com/">JSPatch平台集成方案</a></p>
-</blockquote>
-
-<p><a href="https://github.com/facebook/react-native">react-native</a></p>
-
-<blockquote>
-<p>A framework for building native apps with React <a href="http://facebook.github.io/react-native/">Docs</a></p>
-</blockquote>
-
-<p><a href="https://github.com/alibaba/weex">weex</a></p>
-
-<blockquote>
-<p>A framework for building Mobile cross-platform UI</p>
-</blockquote>
-
-<p><a href="https://github.com/DynamicCocoa/DynamicCocoa">DynamicCocoa</a></p>
-
-<blockquote>
-<p>A framework for running Cocoa code dynamically.</p>
-</blockquote>
-
-<h4 id="toc_6">包管理</h4>
-
-<p><a href="https://github.com/Homebrew/brew/">Homebrew</a></p>
-
-<blockquote>
-<p>The missing package manager for macOS</p>
-</blockquote>
+<p>现在，如果你打开Finder——服务菜单，你会看到刚才制作的“Toggle Hidden Files”选项。现在添加键盘快捷键，打开系统偏好设置——键盘，点击”快捷键“选项卡。在左边选择”服务“，然后勾上“Toggle Hidden Files”，在它的右边双击鼠标，然后按下你想要设定成为的快捷键，如<code>⌘⇧.</code></p>
 
 
     
@@ -288,16 +156,13 @@ JSPatch 可以让你用 JavaScript 书写原生 iOS APP。只需在项目引入�
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="14883561894948.html" 
-          title="Previous Post: mac 平台应用程序">&laquo; mac 平台应用程序</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="14878610150115.html" 
-          title="Next Post: swift 中 open,public,internal,fileprivate,private关键词">swift 中 open,public,internal,fileprivate,private关键词 &raquo;</a>
+          <a  href="14895468321520.html" 
+          title="Next Post: Sublime Text3 (build3126) 简单使用笔记">Sublime Text3 (build3126) 简单使用笔记 &raquo;</a>
       
       </p>
         </div>
