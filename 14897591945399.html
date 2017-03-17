@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  Podfile - lvjesus's blog
+  构建pod私有项目 - 组件化开发一 - lvjesus's blog
   
   </title>
   
@@ -105,14 +105,14 @@
       <div class="markdown-body article-wrap">
        <div class="article">
           
-          <h1>Podfile</h1>
+          <h1>构建pod私有项目 - 组件化开发一</h1>
      
         <div class="read-more clearfix">
           <span class="date">2017/3/17</span>
 
           <span>posted in&nbsp;</span> 
           
-              <span class="posted-in"><a href='%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html'>技术细节</a></span>
+              <span class="posted-in"><a href='iOS%E5%BC%80%E5%8F%91.html'>iOS开发</a></span>
            
          
           <span class="comments">
@@ -125,186 +125,51 @@
       </div><!-- article -->
 
       <div class="article-content">
-      <h3 id="toc_0">什么是Podfile?</h3>
+      <h3 id="toc_0">基本准备工作</h3>
 
-<p>Podfile是一种描述了一个或者多个Xcode项目的target依赖的规范,文件应该被命名为Podfile,所有的例子都是基于CocoaPods 1.0或更高版本</p>
+<blockquote>
+<p>因为oschina可以免费创建私有项目,且在国内的速度要快一些,最近付费的VPN clone速度太慢,故以oschina为例.github同理.</p>
+</blockquote>
+
+<p>1.先去oschina创建一个项目存放私有Repo源,repo地址<a href="https://git.oschina.net/BBModular/BBRepo.git">https://git.oschina.net/BBModular/BBRepo.git</a> 后面私有pod源都会放在这里。</p>
 
 <span id="more"></span><!-- more -->
 
-<blockquote>
-<p>Podfile 可以非常的简单,这是增加了Alamofire单个目标:</p>
-</blockquote>
+<p>2.本地添加私有源 终端执行命令<code>pod repo add BBRepo https://git.oschina.net/BBModular/BBRepo.git</code>（如果之前并未向oschina push过文件也没有把SSH公钥保存到oschina，这时候应该会提示你输入oschina账号密码)</p>
 
-<pre><code class="language-ruby">target &#39;MyApp&#39; do
-  pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1.0&#39;
-end
+<p>3.以上操作完成 <code>cd ~/.cocoapods/repos</code>目录下至少会有2个文件夹 <code>BBRepo</code> 和 <code>master</code>, master文件下面存放的是公有源文件,<code>BBRepo</code>目录下目前是空的，后面会存放我们私有源文件</p>
+
+<hr/>
+
+<h3 id="toc_1">Xcode创建项目</h3>
+
+<p>1.oschina新建一个project名为BBUIBase,终端或者用图形工具sourceTree克隆到本地,开发代码.</p>
+
+<p>2.因cocoaPods强制添加开源许可文件,终端cd至BBUIBase目录下执行命令<code>echo MIT&gt;FILE_LICENSE</code>创建名为<code>FILE_LICENSE</code>的文件</p>
+
+<p>3.终端cd至BBUIBase目录下执行命令<code>pod spec create BBUIBase</code></p>
+
+<p>4.终端cd至BBUIBase目录下执行命令<code>vim .BBUIBase.podspec</code>编辑podspec文件.或者用图形工具Sublime Text编辑.</p>
+
+<p>5.退出编辑 执行命令<code>git add .</code></p>
+
+<p>6.`git commit -m &#39;log&#39;</p>
+
+<p>7.<code>git tag 0.0.1</code> tag一定要和podspec中的version一致</p>
+
+<p>8.<code>git push origin master --tags</code> --tags为了把刚才添加的tag提交上去</p>
+
+<p>9.执行命令<code>pod repo push BBRepo BBUIBase.podspec --verbose --allow-warnings</code> 注：<code>BBRepo</code>即为准备工作中的私有源仓库</p>
+
+<p>10.成功后<code>pod search BBUIBase</code>应该就能搜索到了</p>
+
+<pre><code class="language-ruby">-&gt; BBUIBase (0.0.1)
+   A short description of BBUIBase.
+   pod &#39;BBUIBase&#39;, &#39;~&gt; 0.0.1&#39;
+   - Homepage: https://git.oschina.net/BBModular/BBUIBase
+   - Source:   https://git.oschina.net/BBModular/BBUIBase.git
+   - Versions: 0.0.1 [BBRepo repo]
 </code></pre>
-
-<p>or</p>
-
-<pre><code class="language-ruby">target &#39;MyApp&#39; do
-  use_frameworks!
-  pod &#39;Alamofire&#39;, &#39;~&gt; 3.0&#39;
-end
-</code></pre>
-
-<blockquote>
-<p>一个更复杂的例子:Podfile连接应用程序和它的测试包:</p>
-</blockquote>
-
-<pre><code class="language-ruby"># source  &#39;URL&#39; ： 指定镜像仓库的源
-source &#39;https://github.com/CocoaPods/Specs.git&#39;
-source &#39;https://github.com/Artsy/Specs.git&#39;
-
-# 指定所支持系统和最低版本
-platform :ios, &#39;9.0&#39;
-# 屏蔽所有warning
-inhibit_all_warnings!
-
-target &#39;MyApp&#39; do
-  pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1&#39;
-
-  # Has its own copy of OCMock
-  # and has access to GoogleAnalytics via the app
-  # that hosts the test target
-#主机测试目标
-  target &#39;MyAppTests&#39; do
-    inherit! :search_paths
-    pod &#39;OCMock&#39;, &#39;~&gt; 2.0.1&#39;
-  end
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    puts target.name
-  end
-end
-
-</code></pre>
-
-<blockquote>
-<p>如果你想多个target共享相同的pods 使用<code>abstract_target</code></p>
-</blockquote>
-
-<pre><code class="language-ruby"># 在任何Xcode项目中没有target叫&quot;Shows&quot;
-abstract_target &#39;Shows&#39; do
-  pod &#39;ShowsKit&#39;
-  pod &#39;Fabric&#39;
-
-  # 有自己的副本ShowsKit + ShowWebAuth
-  target &#39;ShowsiOS&#39; do
-    pod &#39;ShowWebAuth&#39;
-  end
-
-  # 有自己的副本ShowsKit + ShowTVAuth
-  target &#39;ShowsTV&#39; do
-    pod &#39;ShowTVAuth&#39;
-  end
-end
-
-</code></pre>
-
-<blockquote>
-<p>有隐含的抽象target在Podfile的全局作用域中,所以你可以写上面的例子写成如下所示:</p>
-</blockquote>
-
-<pre><code class="language-ruby">pod &#39;ShowsKit&#39;
-pod &#39;Fabric&#39;
-
-# 有自己的副本ShowsKit + ShowWebAuth
-target &#39;ShowsiOS&#39; do
-  pod &#39;ShowWebAuth&#39;
-end
-
-# 有自己的副本ShowsKit + ShowTVAuth
-target &#39;ShowsTV&#39; do
-  pod &#39;ShowTVAuth&#39;
-end
-
-</code></pre>
-
-<h3 id="toc_1">指定pod版本</h3>
-
-<blockquote>
-<p>不写版本号,即始终保持最新的版本</p>
-</blockquote>
-
-<pre><code class="language-ruby">pod &#39;AFNetworking&#39;
-
-</code></pre>
-
-<blockquote>
-<p>指定版本号</p>
-</blockquote>
-
-<pre><code class="language-ruby">pod &#39;AFNetworking&#39;,&#39;3.1&#39;
-</code></pre>
-
-<blockquote>
-<p>除了没有版本,或特定的一个,也可以使用逻辑运算符:</p>
-</blockquote>
-
-<ul>
-<li>&#39;&gt; 0.1&#39; 版本号大于0.1</li>
-<li>&#39;&gt;= 0.1&#39; 版本等于或大于0.1</li>
-<li>&#39;&lt; 0.1&#39; 版本号小于0.1</li>
-<li>&#39;&lt;= 0.1&#39; 版本小于或等于0.1</li>
-</ul>
-
-<blockquote>
-<p>除了逻辑操作符CocoaPods还有<code>optimistic</code>操作符<code>~&gt;</code>:</p>
-</blockquote>
-
-<ul>
-<li>&#39;~&gt; 0.1.2&#39; 版本号大于等于0.1.2,小于0.2</li>
-<li>&#39;~&gt; 0.1&#39; 版本号大于等于0.1,小于1.0</li>
-<li>&#39;~&gt; 0&#39; 版本号大于等于0,相当于不写版本号</li>
-</ul>
-
-<h3 id="toc_2">使用本地文件</h3>
-
-<p>如果你想开发一个Pod与它的客户端项目，你可以使用<code>:path</code>。</p>
-
-<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :path =&gt; &#39;~/Documents/Alamofire&#39;
-</code></pre>
-
-<p>使用此选项CocoaPods将假设给定的文件夹是Pod的根，并将直接从Pods项目中链接文件。这意味着您的编辑将在CocoaPods安装之间保留。引用的文件夹可以是您喜欢的SCM的检出，或者甚至是当前仓库的git子模块。</p>
-
-<p>注意，<code>podspec</code> Pod文件的预期在于指定的文件夹。</p>
-
-<h3 id="toc_3">选择不同的分支</h3>
-
-<ul>
-<li>使用masterrepo 的分支：</li>
-</ul>
-
-<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;
-</code></pre>
-
-<ul>
-<li>使用repo的不同分支：</li>
-</ul>
-
-<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;, :branch =&gt; &#39;dev&#39;
-</code></pre>
-
-<ul>
-<li>使用repo的标签：</li>
-</ul>
-
-<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;, :tag =&gt; &#39;3.1.1&#39;
-</code></pre>
-
-<ul>
-<li>或者指定一个提交：</li>
-</ul>
-
-<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;, :commit =&gt; &#39;0f506b1c45&#39;
-</code></pre>
-
-<h3 id="toc_4">附录</h3>
-
-<p>摘自<a href="http://guides.cocoapods.org/using/the-podfile.html">guidescocoapods</a></p>
 
 
     
@@ -315,16 +180,13 @@ end
         <div class="large-6 columns">
         <p class="text-left" style="padding:15px 0px;">
       
-          <a href="14897307692145.html" 
-          title="Previous Post: 语义化版本控制 2.0.0">&laquo; 语义化版本控制 2.0.0</a>
-      
         </p>
         </div>
         <div class="large-6 columns">
       <p class="text-right" style="padding:15px 0px;">
       
-          <a  href="14896520622006.html" 
-          title="Next Post: 简单的设置 (显示/隐藏) 隐藏文件(快捷键`⌘⇧.`)">简单的设置 (显示/隐藏) 隐藏文件(快捷键`⌘⇧.`) &raquo;</a>
+          <a  href="14897307692145.html" 
+          title="Next Post: 语义化版本控制 2.0.0">语义化版本控制 2.0.0 &raquo;</a>
       
       </p>
         </div>

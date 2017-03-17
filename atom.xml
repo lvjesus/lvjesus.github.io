@@ -4,13 +4,68 @@
   <title><![CDATA[lvjesus's blog]]></title>
   <link href="www.blog.lvjesus.com/atom.xml" rel="self"/>
   <link href="www.blog.lvjesus.com/"/>
-  <updated>2017-03-17T16:22:42+08:00</updated>
+  <updated>2017-03-17T22:08:53+08:00</updated>
   <id>www.blog.lvjesus.com/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[构建pod私有项目 - 组件化开发一]]></title>
+    <link href="www.blog.lvjesus.com/14897591945399.html"/>
+    <updated>2017-03-17T21:59:54+08:00</updated>
+    <id>www.blog.lvjesus.com/14897591945399.html</id>
+    <content type="html"><![CDATA[
+<h3 id="toc_0">基本准备工作</h3>
+
+<blockquote>
+<p>因为oschina可以免费创建私有项目,且在国内的速度要快一些,最近付费的VPN clone速度太慢,故以oschina为例.github同理.</p>
+</blockquote>
+
+<p>1.先去oschina创建一个项目存放私有Repo源,repo地址<a href="https://git.oschina.net/BBModular/BBRepo.git">https://git.oschina.net/BBModular/BBRepo.git</a> 后面私有pod源都会放在这里。</p>
+
+<span id="more"></span><!-- more -->
+
+<p>2.本地添加私有源 终端执行命令<code>pod repo add BBRepo https://git.oschina.net/BBModular/BBRepo.git</code>（如果之前并未向oschina push过文件也没有把SSH公钥保存到oschina，这时候应该会提示你输入oschina账号密码)</p>
+
+<p>3.以上操作完成 <code>cd ~/.cocoapods/repos</code>目录下至少会有2个文件夹 <code>BBRepo</code> 和 <code>master</code>, master文件下面存放的是公有源文件,<code>BBRepo</code>目录下目前是空的，后面会存放我们私有源文件</p>
+
+<hr/>
+
+<h3 id="toc_1">Xcode创建项目</h3>
+
+<p>1.oschina新建一个project名为BBUIBase,终端或者用图形工具sourceTree克隆到本地,开发代码.</p>
+
+<p>2.因cocoaPods强制添加开源许可文件,终端cd至BBUIBase目录下执行命令<code>echo MIT&gt;FILE_LICENSE</code>创建名为<code>FILE_LICENSE</code>的文件</p>
+
+<p>3.终端cd至BBUIBase目录下执行命令<code>pod spec create BBUIBase</code></p>
+
+<p>4.终端cd至BBUIBase目录下执行命令<code>vim .BBUIBase.podspec</code>编辑podspec文件.或者用图形工具Sublime Text编辑.</p>
+
+<p>5.退出编辑 执行命令<code>git add .</code></p>
+
+<p>6.`git commit -m &#39;log&#39;</p>
+
+<p>7.<code>git tag 0.0.1</code> tag一定要和podspec中的version一致</p>
+
+<p>8.<code>git push origin master --tags</code> --tags为了把刚才添加的tag提交上去</p>
+
+<p>9.执行命令<code>pod repo push BBRepo BBUIBase.podspec --verbose --allow-warnings</code> 注：<code>BBRepo</code>即为准备工作中的私有源仓库</p>
+
+<p>10.成功后<code>pod search BBUIBase</code>应该就能搜索到了</p>
+
+<pre><code class="language-ruby">-&gt; BBUIBase (0.0.1)
+   A short description of BBUIBase.
+   pod &#39;BBUIBase&#39;, &#39;~&gt; 0.0.1&#39;
+   - Homepage: https://git.oschina.net/BBModular/BBUIBase
+   - Source:   https://git.oschina.net/BBModular/BBUIBase.git
+   - Versions: 0.0.1 [BBRepo repo]
+</code></pre>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[语义化版本控制 2.0.0]]></title>
@@ -122,7 +177,8 @@
 
 <h3 id="toc_5">附录</h3>
 
-<p>摘自<a href="http://semver.org/lang/zh-CN/#section-1">语义化版本 2.0.0</a></p>
+<p>摘自<a href="http://semver.org/lang/zh-CN/#section-1">语义化版本 2.0.0</a><br/>
+<a href="https://www.youtube.com/watch?v=x4ARXyovvPc">视频介绍波纹箭头和pod</a></p>
 
 ]]></content>
   </entry>
