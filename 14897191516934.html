@@ -1,0 +1,492 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Podfile - lvjesus's blog
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="lvjesus's blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site:www.blog.lvjesus.com ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="http://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; lvjesus's blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+       
+       <li><a href="index.html">HOME</a></li>
+    <li><a href="archives.html">Archives</a></li>
+    <li><a href="about.html">ABOUT</a></li>
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="iOS%E5%BC%80%E5%8F%91.html">iOS开发</a></li>
+        
+            <li><a href="%E9%9A%8F%E7%AC%94.html">随笔</a></li>
+        
+            <li><a href="%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html">技术细节</a></li>
+        
+            <li><a href="Swift.html">Swift</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>Podfile</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2017/3/17</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html'>技术细节</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h3 id="toc_0">什么是Podfile?</h3>
+
+<p>Podfile是一种描述了一个或者多个Xcode项目的target依赖的规范,文件应该被命名为Podfile,所有的例子都是基于CocoaPods 1.0或更高版本</p>
+
+<span id="more"></span><!-- more -->
+
+<blockquote>
+<p>Podfile 可以非常的简单,这是增加了Alamofire单个目标:</p>
+</blockquote>
+
+<pre><code class="language-ruby">target &#39;MyApp&#39; do
+  pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1.0&#39;
+end
+</code></pre>
+
+<p>or</p>
+
+<pre><code class="language-ruby">target &#39;MyApp&#39; do
+  use_frameworks!
+  pod &#39;Alamofire&#39;, &#39;~&gt; 3.0&#39;
+end
+</code></pre>
+
+<blockquote>
+<p>一个更复杂的例子:Podfile连接应用程序和它的测试包:</p>
+</blockquote>
+
+<pre><code class="language-ruby"># source  &#39;URL&#39; ： 指定镜像仓库的源
+source &#39;https://github.com/CocoaPods/Specs.git&#39;
+source &#39;https://github.com/Artsy/Specs.git&#39;
+
+# 指定所支持系统和最低版本
+platform :ios, &#39;9.0&#39;
+# 屏蔽所有warning
+inhibit_all_warnings!
+
+target &#39;MyApp&#39; do
+  pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1&#39;
+
+  # Has its own copy of OCMock
+  # and has access to GoogleAnalytics via the app
+  # that hosts the test target
+#主机测试目标
+  target &#39;MyAppTests&#39; do
+    inherit! :search_paths
+    pod &#39;OCMock&#39;, &#39;~&gt; 2.0.1&#39;
+  end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    puts target.name
+  end
+end
+
+</code></pre>
+
+<blockquote>
+<p>如果你想多个target共享相同的pods 使用<code>abstract_target</code></p>
+</blockquote>
+
+<pre><code class="language-ruby"># 在任何Xcode项目中没有target叫&quot;Shows&quot;
+abstract_target &#39;Shows&#39; do
+  pod &#39;ShowsKit&#39;
+  pod &#39;Fabric&#39;
+
+  # 有自己的副本ShowsKit + ShowWebAuth
+  target &#39;ShowsiOS&#39; do
+    pod &#39;ShowWebAuth&#39;
+  end
+
+  # 有自己的副本ShowsKit + ShowTVAuth
+  target &#39;ShowsTV&#39; do
+    pod &#39;ShowTVAuth&#39;
+  end
+end
+
+</code></pre>
+
+<blockquote>
+<p>有隐含的抽象target在Podfile的全局作用域中,所以你可以写上面的例子写成如下所示:</p>
+</blockquote>
+
+<pre><code class="language-ruby">pod &#39;ShowsKit&#39;
+pod &#39;Fabric&#39;
+
+# 有自己的副本ShowsKit + ShowWebAuth
+target &#39;ShowsiOS&#39; do
+  pod &#39;ShowWebAuth&#39;
+end
+
+# 有自己的副本ShowsKit + ShowTVAuth
+target &#39;ShowsTV&#39; do
+  pod &#39;ShowTVAuth&#39;
+end
+
+</code></pre>
+
+<h3 id="toc_1">指定pod版本</h3>
+
+<blockquote>
+<p>不写版本号,即始终保持最新的版本</p>
+</blockquote>
+
+<pre><code class="language-ruby">pod &#39;AFNetworking&#39;
+
+</code></pre>
+
+<blockquote>
+<p>指定版本号</p>
+</blockquote>
+
+<pre><code class="language-ruby">pod &#39;AFNetworking&#39;,&#39;3.1&#39;
+</code></pre>
+
+<blockquote>
+<p>除了没有版本,或特定的一个,也可以使用逻辑运算符:</p>
+</blockquote>
+
+<ul>
+<li>&#39;&gt; 0.1&#39; 版本号大于0.1</li>
+<li>&#39;&gt;= 0.1&#39; 版本等于或大于0.1</li>
+<li>&#39;&lt; 0.1&#39; 版本号小于0.1</li>
+<li>&#39;&lt;= 0.1&#39; 版本小于或等于0.1</li>
+</ul>
+
+<blockquote>
+<p>除了逻辑操作符CocoaPods还有<code>optimistic</code>操作符<code>~&gt;</code>:</p>
+</blockquote>
+
+<ul>
+<li>&#39;~&gt; 0.1.2&#39; 版本号大于等于0.1.2,小于0.2</li>
+<li>&#39;~&gt; 0.1&#39; 版本号大于等于0.1,小于1.0</li>
+<li>&#39;~&gt; 0&#39; 版本号大于等于0,相当于不写版本号</li>
+</ul>
+
+<h3 id="toc_2">使用本地文件</h3>
+
+<p>如果你想开发一个Pod与它的客户端项目，你可以使用<code>:path</code>。</p>
+
+<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :path =&gt; &#39;~/Documents/Alamofire&#39;
+</code></pre>
+
+<p>使用此选项CocoaPods将假设给定的文件夹是Pod的根，并将直接从Pods项目中链接文件。这意味着您的编辑将在CocoaPods安装之间保留。引用的文件夹可以是您喜欢的SCM的检出，或者甚至是当前仓库的git子模块。</p>
+
+<p>注意，<code>podspec</code> Pod文件的预期在于指定的文件夹。</p>
+
+<h3 id="toc_3">选择不同的分支</h3>
+
+<ul>
+<li>使用masterrepo 的分支：</li>
+</ul>
+
+<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;
+</code></pre>
+
+<ul>
+<li>使用repo的不同分支：</li>
+</ul>
+
+<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;, :branch =&gt; &#39;dev&#39;
+</code></pre>
+
+<ul>
+<li>使用repo的标签：</li>
+</ul>
+
+<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;, :tag =&gt; &#39;3.1.1&#39;
+</code></pre>
+
+<ul>
+<li>或者指定一个提交：</li>
+</ul>
+
+<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;, :commit =&gt; &#39;0f506b1c45&#39;
+</code></pre>
+
+<h3 id="toc_4">附录</h3>
+
+<p>摘自<a href="http://guides.cocoapods.org/using/the-podfile.html">guidescocoapods</a></p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="14897307692145.html" 
+          title="Previous Post: 语义化版本控制 2.0.0">&laquo; 语义化版本控制 2.0.0</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="14896520622006.html" 
+          title="Next Post: 简单的设置 (显示/隐藏) 隐藏文件(快捷键`⌘⇧.`)">简单的设置 (显示/隐藏) 隐藏文件(快捷键`⌘⇧.`) &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>lvjesus's blog</h1>
+                <div class="site-des">我的网站</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="iOS%E5%BC%80%E5%8F%91.html"><strong>iOS开发</strong></a>
+        
+            <a href="%E9%9A%8F%E7%AC%94.html"><strong>随笔</strong></a>
+        
+            <a href="%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82.html"><strong>技术细节</strong></a>
+        
+            <a href="Swift.html"><strong>Swift</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="14897307692145.html">语义化版本控制 2.0.0</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14897191516934.html">Podfile</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14896520622006.html">简单的设置 (显示/隐藏) 隐藏文件(快捷键`⌘⇧.`)</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14895468321520.html">Sublime Text3 (build3126) 简单使用笔记</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="14887665167043.html">Demonstrate</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    <script src="asset/chart/all-min.js"></script><script type="text/javascript">$(function(){    var mwebii=0;    var mwebChartEleId = 'mweb-chart-ele-';    $('pre>code').each(function(){        mwebii++;        var eleiid = mwebChartEleId+mwebii;        if($(this).hasClass('language-sequence')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = Diagram.parse($(this).text());            diagram.drawSVG(eleiid,{theme: 'simple'});        }else if($(this).hasClass('language-flow')){            var ele = $(this).addClass('nohighlight').parent();            $('<div id="'+eleiid+'"></div>').insertAfter(ele);            ele.hide();            var diagram = flowchart.parse($(this).text());            diagram.drawSVG(eleiid);        }    });});</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({TeX: { equationNumbers: { autoNumber: "AMS" } }});</script>
+
+
+  </body>
+</html>
