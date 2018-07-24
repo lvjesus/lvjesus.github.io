@@ -4,7 +4,7 @@
   <title><![CDATA[lvjesus's blog]]></title>
   <link href="www.blog.lvjesus.com/atom.xml" rel="self"/>
   <link href="www.blog.lvjesus.com/"/>
-  <updated>2017-03-17T22:08:54+08:00</updated>
+  <updated>2017-04-11T22:13:11+08:00</updated>
   <id>www.blog.lvjesus.com/</id>
   <author>
     <name><![CDATA[]]></name>
@@ -589,6 +589,9 @@ reboot 回车<br/>
 <li>
 <a href="#toc_10">音频类</a>
 </li>
+<li>
+<a href="#toc_11">科学上网</a>
+</li>
 </ul>
 
 
@@ -792,6 +795,14 @@ JSPatch 可以让你用 JavaScript 书写原生 iOS APP。只需在项目引入�
 <p><a href="https://github.com/TheAmazingAudioEngine/TheAmazingAudioEngine">TheAmazingAudioEngine</a></p>
 
 <p><a href="https://github.com/TheAmazingAudioEngine/TheAmazingAudioEngine2">TheAmazingAudioEngine2</a></p>
+
+<h4 id="toc_11">科学上网</h4>
+
+<p><a href="https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7">new-pac</a></p>
+
+<blockquote>
+<p>自由上网方法</p>
+</blockquote>
 
 ]]></content>
   </entry>
