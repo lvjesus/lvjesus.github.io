@@ -2,7 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
   <loc>www.blog.lvjesus.com/</loc>
-  <lastmod>2017-10-12T09:46:47+08:00</lastmod>
+  <lastmod>2018-07-25T10:28:00+08:00</lastmod>
+</url>
+
+<url>
+  <loc>www.blog.lvjesus.com/15324142684354.html</loc>
+  <lastmod>2018-07-24T14:37:48+08:00</lastmod>
+</url>
+
+<url>
+  <loc>www.blog.lvjesus.com/15324130404418.html</loc>
+  <lastmod>2018-07-24T14:17:20+08:00</lastmod>
 </url>
 
 <url>
@@ -33,11 +43,6 @@
 <url>
   <loc>www.blog.lvjesus.com/14895468321520.html</loc>
   <lastmod>2017-03-15T11:00:32+08:00</lastmod>
-</url>
-
-<url>
-  <loc>www.blog.lvjesus.com/14887665167043.html</loc>
-  <lastmod>2017-03-06T10:15:16+08:00</lastmod>
 </url>
 
 <url>
@@ -90,7 +95,11 @@
 </url>
 
 <url>
-  <loc>www.blog.lvjesus.com/Swift.html</loc>
+  <loc>www.blog.lvjesus.com/iOS%E9%80%86%E5%90%91%E4%B8%8E%E5%AE%89%E5%85%A8.html</loc>
+</url>
+
+<url>
+  <loc>www.blog.lvjesus.com/iOS%E7%BB%84%E4%BB%B6%E5%8C%96.html</loc>
 </url>
 
 

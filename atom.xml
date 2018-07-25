@@ -4,13 +4,33 @@
   <title><![CDATA[lvjesus's blog]]></title>
   <link href="www.blog.lvjesus.com/atom.xml" rel="self"/>
   <link href="www.blog.lvjesus.com/"/>
-  <updated>2017-04-11T22:13:11+08:00</updated>
+  <updated>2018-07-25T10:08:19+08:00</updated>
   <id>www.blog.lvjesus.com/</id>
   <author>
     <name><![CDATA[]]></name>
     
   </author>
   <generator uri="http://www.mweb.im/">MWeb</generator>
+  
+  <entry>
+    <title type="html"><![CDATA[2]]></title>
+    <link href="www.blog.lvjesus.com/15324142684354.html"/>
+    <updated>2018-07-24T14:37:48+08:00</updated>
+    <id>www.blog.lvjesus.com/15324142684354.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[1]]></title>
+    <link href="www.blog.lvjesus.com/15324130404418.html"/>
+    <updated>2018-07-24T14:17:20+08:00</updated>
+    <id>www.blog.lvjesus.com/15324130404418.html</id>
+    <content type="html"><![CDATA[
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[完整开源项目]]></title>
@@ -75,7 +95,7 @@
 
 <p>10.成功后<code>pod search BBUIBase</code>应该就能搜索到了</p>
 
-<pre><code class="language-ruby">-&gt; BBUIBase (0.0.1)
+<pre class="line-numbers"><code class="language-ruby">-&gt; BBUIBase (0.0.1)
    A short description of BBUIBase.
    pod &#39;BBUIBase&#39;, &#39;~&gt; 0.0.1&#39;
    - Homepage: https://git.oschina.net/BBModular/BBUIBase
@@ -218,14 +238,14 @@
 <p>Podfile 可以非常的简单,这是增加了Alamofire单个目标:</p>
 </blockquote>
 
-<pre><code class="language-ruby">target &#39;MyApp&#39; do
+<pre class="line-numbers"><code class="language-ruby">target &#39;MyApp&#39; do
   pod &#39;AFNetworking&#39;, &#39;~&gt; 3.1.0&#39;
 end
 </code></pre>
 
 <p>or</p>
 
-<pre><code class="language-ruby">target &#39;MyApp&#39; do
+<pre class="line-numbers"><code class="language-ruby">target &#39;MyApp&#39; do
   use_frameworks!
   pod &#39;Alamofire&#39;, &#39;~&gt; 3.0&#39;
 end
@@ -235,7 +255,7 @@ end
 <p>一个更复杂的例子:Podfile连接应用程序和它的测试包:</p>
 </blockquote>
 
-<pre><code class="language-ruby"># source  &#39;URL&#39; ： 指定镜像仓库的源
+<pre class="line-numbers"><code class="language-ruby"># source  &#39;URL&#39; ： 指定镜像仓库的源
 source &#39;https://github.com/CocoaPods/Specs.git&#39;
 source &#39;https://github.com/Artsy/Specs.git&#39;
 
@@ -269,7 +289,7 @@ end
 <p>如果你想多个target共享相同的pods 使用<code>abstract_target</code></p>
 </blockquote>
 
-<pre><code class="language-ruby"># 在任何Xcode项目中没有target叫&quot;Shows&quot;
+<pre class="line-numbers"><code class="language-ruby"># 在任何Xcode项目中没有target叫&quot;Shows&quot;
 abstract_target &#39;Shows&#39; do
   pod &#39;ShowsKit&#39;
   pod &#39;Fabric&#39;
@@ -291,7 +311,7 @@ end
 <p>有隐含的抽象target在Podfile的全局作用域中,所以你可以写上面的例子写成如下所示:</p>
 </blockquote>
 
-<pre><code class="language-ruby">pod &#39;ShowsKit&#39;
+<pre class="line-numbers"><code class="language-ruby">pod &#39;ShowsKit&#39;
 pod &#39;Fabric&#39;
 
 # 有自己的副本ShowsKit + ShowWebAuth
@@ -312,7 +332,7 @@ end
 <p>不写版本号,即始终保持最新的版本</p>
 </blockquote>
 
-<pre><code class="language-ruby">pod &#39;AFNetworking&#39;
+<pre class="line-numbers"><code class="language-ruby">pod &#39;AFNetworking&#39;
 
 </code></pre>
 
@@ -320,7 +340,7 @@ end
 <p>指定版本号</p>
 </blockquote>
 
-<pre><code class="language-ruby">pod &#39;AFNetworking&#39;,&#39;3.1&#39;
+<pre class="line-numbers"><code class="language-ruby">pod &#39;AFNetworking&#39;,&#39;3.1&#39;
 </code></pre>
 
 <blockquote>
@@ -348,7 +368,7 @@ end
 
 <p>如果你想开发一个Pod与它的客户端项目，你可以使用<code>:path</code>。</p>
 
-<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :path =&gt; &#39;~/Documents/Alamofire&#39;
+<pre class="line-numbers"><code class="language-ruby">pod &#39;Alamofire&#39;, :path =&gt; &#39;~/Documents/Alamofire&#39;
 </code></pre>
 
 <p>使用此选项CocoaPods将假设给定的文件夹是Pod的根，并将直接从Pods项目中链接文件。这意味着您的编辑将在CocoaPods安装之间保留。引用的文件夹可以是您喜欢的SCM的检出，或者甚至是当前仓库的git子模块。</p>
@@ -361,28 +381,28 @@ end
 <li>使用masterrepo 的分支：</li>
 </ul>
 
-<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;
+<pre class="line-numbers"><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;
 </code></pre>
 
 <ul>
 <li>使用repo的不同分支：</li>
 </ul>
 
-<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;, :branch =&gt; &#39;dev&#39;
+<pre class="line-numbers"><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;, :branch =&gt; &#39;dev&#39;
 </code></pre>
 
 <ul>
 <li>使用repo的标签：</li>
 </ul>
 
-<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;, :tag =&gt; &#39;3.1.1&#39;
+<pre class="line-numbers"><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;, :tag =&gt; &#39;3.1.1&#39;
 </code></pre>
 
 <ul>
 <li>或者指定一个提交：</li>
 </ul>
 
-<pre><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;, :commit =&gt; &#39;0f506b1c45&#39;
+<pre class="line-numbers"><code class="language-ruby">pod &#39;Alamofire&#39;, :git =&gt; &#39;https://github.com/Alamofire/Alamofire.git&#39;, :commit =&gt; &#39;0f506b1c45&#39;
 </code></pre>
 
 <h3 id="toc_4">附录</h3>
@@ -406,7 +426,7 @@ end
 
 <p>脚本如下:</p>
 
-<pre><code class="language-bash">STATUS=`defaults read com.apple.finder AppleShowAllFiles`
+<pre class="line-numbers"><code class="language-bash">STATUS=`defaults read com.apple.finder AppleShowAllFiles`
 if [ $STATUS == YES ];
 then
 defaults write com.apple.finder AppleShowAllFiles NO
@@ -476,16 +496,6 @@ fi
 
 <p>安装完成<br/>
 <img src="media/14895468321520/ConvertToUTF8%E5%AE%89%E8%A3%85%E5%AE%8C%E6%88%90.png" alt="ConvertToUTF8安装完成"/></p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Demonstrate]]></title>
-    <link href="www.blog.lvjesus.com/14887665167043.html"/>
-    <updated>2017-03-06T10:15:16+08:00</updated>
-    <id>www.blog.lvjesus.com/14887665167043.html</id>
-    <content type="html"><![CDATA[
 
 ]]></content>
   </entry>
